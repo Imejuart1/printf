@@ -1,3 +1,11 @@
+-e #include main.h
+
+*
+ * _printf - Reproduce behavior of printf function
+ * @format: format string
+ * Return: value of printed chars
+ */
+
 int _printf(const char *format, ...)
 {
 va_list ap;
