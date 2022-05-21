@@ -62,7 +62,7 @@ if (charac == '%')
 flag--;
 counter += f_counter;
 }
-else if (f_counter == -1 && charac != n && flag == 1)
+else if (f_counter == -1 && charac != '\n' && flag == 1)
 counter += _putchar('%');
 }
 
