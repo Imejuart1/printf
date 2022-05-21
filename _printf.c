@@ -37,19 +37,19 @@ int loop_format(const char *format, va_list args)
 {
 int i = 0, counter = 0, flag = 0, check_flag = 0, f_counter = 0;
 
-while (i < _strlen((char *)format) && *(format + i) != 0)
+while (i < _strlen((char *)format) && *(format + i) != '\0')
 {
 char charac = format[i];
 
-if (charac == %)
+if (charac == '%')
 {
 flag++, i++;
 charac = format[i];
-if (charac == 0 && _strlen((char *)format) == 1)
+if (charac == '\0' && _strlen((char *)format) == 1)
 return (-1);
-if (charac == 0)
+if (charac == '\0')
 return (counter);
-if (charac == %)
+if (charac == '%')
 flag++;
 else
 {
@@ -58,18 +58,18 @@ if (f_counter >= 0 && f_counter != -1)
 {
 i++;
 charac = format[i];
-if (charac == %)
+if (charac == '%')
 flag--;
 counter += f_counter;
 }
 else if (f_counter == -1 && charac != n && flag == 1)
-counter += _putchar(%);
+counter += _putchar('%');
 }
 
 }
 check_flag = check_percent(&flag, charac);
 counter += check_flag;
-if (check_flag == 0 && charac != % && charac != 0)
+if (check_flag == 0 && charac != '%' && charac != '\0')
 counter += _putchar(charac), i++;
 check_flag = 0;
 }
@@ -91,9 +91,9 @@ int tmp;
 
 tmp = *flag;
 
-if (tmp == 2 && charac == %)
+if (tmp == 2 && charac == '%')
 {
-count = _putchar(%);
+count = _putchar('%');
 tmp = 0;
 }
 return (count);
@@ -128,29 +128,29 @@ int count = 0;
 
 switch (c)
 {
-case c:
+case 'c':
 count += print_character(arg);
 break;
-case d:
-case i:
+case 'd':
+case 'i':
 count += print_signInt(arg, 10);
 break;
-case s:
+case 's':
 count += print_string(arg);
 break;
-case x:
+case 'x':
 count += print_base16_upper_lower(arg, "0123456789abcdef");
 break;
-case X:
+case 'X':
 count += print_base16_upper_lower(arg, "0123456789ABCDEF");
 break;
-case p:
+case 'p':
 count += print_addr(arg);
 break;
-case o:
+case 'o':
 count += print_unsignedInt(arg, 8);
 break;
-case u:
+case 'u':
 count += print_unsignedInt(arg, 10);
 break;
 default:
