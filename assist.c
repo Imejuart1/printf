@@ -6,6 +6,7 @@
  * @arg: is a va_list type
  * Return: 1
  */
+
 int print_character(va_list arg)
 {
 	unsigned char i;
@@ -21,6 +22,7 @@ int print_character(va_list arg)
  * @base: e.g., base 10
  * Return: count of digits printed
  */
+
 int print_signInt(va_list arg, int base)
 {
 	int i = 0, count = 0;
@@ -46,6 +48,7 @@ int print_signInt(va_list arg, int base)
  * @base: is an integer
  * Return: is a count of printed characters
  */
+
 int print_unsignedInt(va_list arg, int base)
 {
 	unsigned int i;
