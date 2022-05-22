@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 /**
- * _putchar - writes the character c to
+ * _putchar - writes the character c to stdout
  * standard output
  * @c: the character to print
  *
@@ -14,7 +14,6 @@
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
-
 }
 
 /**
