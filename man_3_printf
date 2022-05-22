@@ -1,1 +1,12 @@
 .TH PRINTF  "GNU" "Linux Programmer's Manual"
+.SH NAME
+printf
+.SH SYNOPSIS
+.nf
+.B #include "holberton.h"
+.PP
+.BI "int _printf(const char *" format ", ...);"
+.fi
+.PP
+.ad
+.PD
