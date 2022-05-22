@@ -1,13 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 
-/**
- * _printf - function produces output according to a format and specific arguments.
- * @format: is a pointer to string
- * Return: is the count of printed characters
- */
-
-
 
 /**
  * loop_format - function is to print format
@@ -140,6 +133,12 @@ int _switch(char c, va_list arg)
 	}
 	return (count);
 }
+
+/**
+ * _printf - function produces output according to a format and specific arguments.
+ * @format: is a pointer to string
+ * Return: is the count of printed characters
+ */
 
 int _printf(const char *format, ...)
 {
