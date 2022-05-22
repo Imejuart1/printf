@@ -26,3 +26,37 @@ This function write the output under the control of a
 string that specifies how subsequent arguments (or arguments accessed via  the  variable-length argument facilities of
 .BR stdarg(3))
 are converted for output.
+.SS Field width
+An optional decimal digit string (with nonzero first digit) specifying
+a minimum field width.
+If the converted value has fewer characters
+than the field width, it will be padded with spaces on the left
+(or right, if the left-adjustment flag has been given).
+Instead of a decimal digit string one may write "*" or "*m$"
+(for some decimal integer \fIm\fP) to specify that the field width
+is given in the next argument, or in the \fIm\fP-th argument, respectively,
+which must be of type
+.IR int .
+A negative field width is taken as a \(aq\-\(aq flag followed by a
+positive field width.
+In no case does a nonexistent or small field width cause truncation of a
+field; if the result of a conversion is wider than the field width, the
+field is expanded to contain the conversion result.
+.SS Precision
+An optional precision, in the form of a period (\(aq.\(aq)  followed by an
+optional decimal digit string.
+Instead of a decimal digit string one may write "*" or "*m$"
+(for some decimal integer \fIm\fP) to specify that the precision
+is given in the next argument, or in the \fIm\fP-th argument, respectively,
+which must be of type
+.IR int .
+If the precision is given as just \(aq.\(aq, the precision is taken to
+be zero.
+A negative precision is taken as if the precision were omitted.
+This gives the minimum number of digits to appear for
+.BR d
+and
+.BR i
+conversions, the number of digits to appear after the radix character and to be printed from a string for
+.B s
+conversions.
