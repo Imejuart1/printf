@@ -10,3 +10,14 @@ printf
 .PP
 .ad
 .PD
+.SH DESCRIPTION
+The function
+.BR _printf ()
+produce output according to a
+.I format
+as described below.
+The function
+.BR _printf ()
+write output to
+.IR stdout ,
+the standard output stream;
