@@ -13,7 +13,7 @@
 
 int _putchar(char c)
 {
-return (write(1, &c, 1));
+	return (write(1, &c, 1));
 
 }
 
@@ -26,12 +26,12 @@ return (write(1, &c, 1));
 
 void _puts(char *str)
 {
-int i;
+	int i;
 
-for (i = 0; str[i] != 0; i++)
-{
-_putchar(str[i]);
-}
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
 }
 
 /**
@@ -43,13 +43,13 @@ _putchar(str[i]);
 
 int _strlen(char *s)
 {
-int i;
+	int i;
 
-for (i = 0; s[i] != 0; i++)
-{
-;
-}
-return (i);
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		;
+	}
+	return (i);
 }
 
 /**
@@ -62,20 +62,20 @@ return (i);
 
 char *convert_to_format(char *rep, unsigned int number, int base)
 {
-char *str;
+	char *str;
 
-static char buffer[128];
+	static char buffer[128];
 
-int mod = 0;
+	int mod = 0;
 
-str = &buffer[127];
+	str = &buffer[127];
 
-*str = 0;
+	*str = '\0';
 
-do {
-mod = number % base;
-*--str = rep[mod];
-number /= base;
-} while (number != 0);
-return (str);
+	do {
+		mod = number % base;
+		*--str = rep[mod];
+		number /= base;
+	} while (number != 0);
+	return (str);
 }
