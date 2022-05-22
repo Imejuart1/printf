@@ -8,23 +8,23 @@
  */
 int _printf(const char *format, ...)
 {
-const char *string;
+	const char *string;
 
-int count = 0;
+	int count = 0;
 
-va_list args;
+	va_list args;
 
-if (!format)
-return (-1);
+	if (!format)
+		return (-1);
 
-va_start(args, format);
-string = format;
+	va_start(args, format);
+	string = format;
 
-count = loop_format(string, args);
+	count = loop_format(string, args);
 
-va_end(args);
+	va_end(args);
 
-return (count);
+	return (count);
 }
 
 /**
@@ -35,45 +35,45 @@ return (count);
  */
 int loop_format(const char *format, va_list args)
 {
-int i = 0, counter = 0, flag = 0, check_flag = 0, f_counter = 0;
+	int i = 0, counter = 0, flag = 0, check_flag = 0, f_counter = 0;
 
-while (i < _strlen((char *)format) && *(format + i) != 0)
-{
-char charac = format[i];
+	while (i < _strlen((char *)format) && *(format + i) != '\0')
+	{
+		char charac = format[i];
 
-if (charac == %)
-{
-flag++, i++;
-charac = format[i];
-if (charac == 0 && _strlen((char *)format) == 1)
-return (-1);
-if (charac == 0)
-return (counter);
-if (charac == %)
-flag++;
-else
-{
-f_counter = func_service(charac, args);
-if (f_counter >= 0 && f_counter != -1)
-{
-i++;
-charac = format[i];
-if (charac == %)
-flag--;
-counter += f_counter;
-}
-else if (f_counter == -1 && charac != n && flag == 1)
-counter += _putchar(%);
-}
+		if (charac == '%')
+		{
+			flag++, i++;
+			charac = format[i];
+			if (charac == '\0' && _strlen((char *)format) == 1)
+				return (-1);
+			if (charac == '\0')
+				return (counter);
+			if (charac == '%')
+				flag++;
+			else
+			{
+				f_counter = func_service(charac, args);
+				if (f_counter >= 0 && f_counter != -1)
+				{
+					i++;
+					charac = format[i];
+					if (charac == '%')
+						flag--;
+					counter += f_counter;
+				}
+				else if (f_counter == -1 && charac != '\n' && flag == 1)
+					counter += _putchar('%');
+			}
 
-}
-check_flag = check_percent(&flag, charac);
-counter += check_flag;
-if (check_flag == 0 && charac != % && charac != 0)
-counter += _putchar(charac), i++;
-check_flag = 0;
-}
-return (counter);
+		}
+		check_flag = check_percent(&flag, charac);
+		counter += check_flag;
+		if (check_flag == 0 && charac != '%' && charac != '\0')
+			counter += _putchar(charac), i++;
+		check_flag = 0;
+	}
+	return (counter);
 }
 
 
@@ -85,18 +85,18 @@ return (counter);
  */
 int check_percent(int *flag, char charac)
 {
-int count = 0;
+	int count = 0;
 
-int tmp;
+	int tmp;
 
-tmp = *flag;
+	tmp = *flag;
 
-if (tmp == 2 && charac == %)
-{
-count = _putchar(%);
-tmp = 0;
-}
-return (count);
+	if (tmp == 2 && charac == '%')
+	{
+		count = _putchar('%');
+		tmp = 0;
+	}
+	return (count);
 }
 
 
@@ -108,11 +108,11 @@ return (count);
  */
 int func_service(char charac, va_list args)
 {
-int count = 0;
+	int count = 0;
 
-count = _switch(charac, args);
+	count = _switch(charac, args);
 
-return (count);
+	return (count);
 }
 
 
@@ -124,37 +124,37 @@ return (count);
  */
 int _switch(char c, va_list arg)
 {
-int count = 0;
+	int count = 0;
 
-switch (c)
-{
-case c:
-count += print_character(arg);
-break;
-case d:
-case i:
-count += print_signInt(arg, 10);
-break;
-case s:
-count += print_string(arg);
-break;
-case x:
-count += print_base16_upper_lower(arg, "0123456789abcdef");
-break;
-case X:
-count += print_base16_upper_lower(arg, "0123456789ABCDEF");
-break;
-case p:
-count += print_addr(arg);
-break;
-case o:
-count += print_unsignedInt(arg, 8);
-break;
-case u:
-count += print_unsignedInt(arg, 10);
-break;
-default:
-count = -1;
-}
-return (count);
+	switch (c)
+	{
+		case 'c':
+			count += print_character(arg);
+			break;
+		case 'd':
+		case 'i':
+			count += print_signInt(arg, 10);
+			break;
+		case 's':
+			count += print_string(arg);
+			break;
+		case 'x':
+			count += print_base16_upper_lower(arg, "0123456789abcdef");
+			break;
+		case 'X':
+			count += print_base16_upper_lower(arg, "0123456789ABCDEF");
+			break;
+		case 'p':
+			count += print_addr(arg);
+			break;
+		case 'o':
+			count += print_unsignedInt(arg, 8);
+			break;
+		case 'u':
+			count += print_unsignedInt(arg, 10);
+			break;
+		default:
+			count = -1;
+	}
+	return (count);
 }
