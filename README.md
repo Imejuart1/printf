@@ -1,1 +1,2 @@
-creating our own printf function
+Writing our own printf function.
+_printf();
