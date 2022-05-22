@@ -9,20 +9,20 @@
 
 int print_string(va_list arg)
 {
-const char *str;
+	const char *str;
 
-int count = 0;
+	int count = 0;
 
-str = (const char *)va_arg(arg, char *);
-if (!str)
-{
-str = "(null)";
-_puts((char *)str);
-return (_strlen((char *)str));
-}
-_puts((char *)str);
-count += _strlen((char *)str);
-return (count);
+	str = (const char *)va_arg(arg, char *);
+	if (!str)
+	{
+		str = "(null)";
+		_puts((char *)str);
+		return (_strlen((char *)str));
+	}
+	_puts((char *)str);
+	count += _strlen((char *)str);
+	return (count);
 }
 
 /**
@@ -36,15 +36,15 @@ return (count);
 
 int print_base16_upper_lower(va_list arg, char *rep)
 {
-unsigned int i = 0;
+	unsigned int i = 0;
 
-int count = 0;
+	int count = 0;
 
-char *s;
+	char *s;
 
-i = va_arg(arg, unsigned int);
-s = convert_to_format(rep, i, 16);
-_puts(s);
-count = _strlen(s);
-return (count);
+	i = va_arg(arg, unsigned int);
+	s = convert_to_format(rep, i, 16);
+	_puts(s);
+	count = _strlen(s);
+	return (count);
 }
