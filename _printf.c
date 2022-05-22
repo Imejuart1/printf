@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
  * @args: is a va_list args
  * Return: is an integer.
  */
+
 int loop_format(const char *format, va_list args)
 {
 	int i = 0, counter = 0, flag = 0, check_flag = 0, f_counter = 0;
@@ -76,7 +77,6 @@ int loop_format(const char *format, va_list args)
 	}
 	return (counter);
 }
-
 
 /**
  * check_percent - print a percentage
