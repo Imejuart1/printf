@@ -7,26 +7,7 @@
  * Return: is the count of printed characters
  */
 
-int _printf(const char *format, ...)
-{
-	const char *string;
 
-	int count = 0;
-
-	va_list args;
-
-	if (!format)
-		return (-1);
-
-	va_start(args, format);
-	string = format;
-
-	count = loop_format(string, args);
-
-	va_end(args);
-
-	return (count);
-}
 
 /**
  * loop_format - function is to print format
@@ -157,5 +138,26 @@ int _switch(char c, va_list arg)
 		default:
 			count = -1;
 	}
+	return (count);
+}
+
+int _printf(const char *format, ...)
+{
+	const char *string;
+
+	int count = 0;
+
+	va_list args;
+
+	if (!format)
+		return (-1);
+
+	va_start(args, format);
+	string = format;
+
+	count = loop_format(string, args);
+
+	va_end(args);
+
 	return (count);
 }
