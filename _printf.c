@@ -3,7 +3,8 @@
 
 
 /**
- * _printf - function produces output according to a format and specific arguments.
+ * _printf - function produces output according to a format
+ * and specific arguments.
  * @format: is a pointer to string
  * Return: is the count of printed characters
  */
